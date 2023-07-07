@@ -10,9 +10,11 @@
 </head>
 
 <body>
-    <form action="">
-        <input type="text">
+    <form action="" method="POST">
+        <label for="monthlyIncome">Monthly Income:</label>
+        <input type="text" name="monthlyIncome" class="border">
     </form>
+
 </body>
 
 </html>
