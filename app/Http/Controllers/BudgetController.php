@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Budget;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class BudgetController extends Controller
 {
@@ -12,7 +13,7 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        //
+        return view('index');
     }
 
     /**
@@ -28,7 +29,19 @@ class BudgetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'income' => 'required'
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+        $budget = Budget::create(
+            $request->all()
+        );
+        $budget->save();
+
+        return redirect('/');
     }
 
     /**
